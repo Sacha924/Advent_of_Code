@@ -17,9 +17,10 @@ func main() {
 	fmt.Printf("Result for day1 : %d \n", compare(col1, col2)) // 2756096
 
 	// PART 2
-	fmt.Printf("Result for day1 part2 : %d \n", readAndProcessFile2("day1/input.txt", "   "))  // 23117829
+	fmt.Printf("Result for day1 part2 : %d \n", readAndProcessFile2("day1/input.txt", "   ")) // 23117829
 }
 
+// NB : this is an ugly way of reading data from files and I will use a cleaner approach in next days
 func readAndProcessFile(path, sep string) ([]int, []int) {
 	col1, col2 := make([]int, 1000), make([]int, 1000) // input file contains 1k lines
 	f, _ := os.Open(path)
@@ -65,8 +66,7 @@ func abs(x int) int { // working with math.Abs is annoying bc it's using float v
 	return x
 }
 
-
-func readAndProcessFile2(path, sep string) (int) {
+func readAndProcessFile2(path, sep string) int {
 	col1 := make([]int, 1000)
 	col2 := make(map[int]int)
 	f, _ := os.Open(path)
@@ -94,10 +94,10 @@ func readAndProcessFile2(path, sep string) (int) {
 		}
 	}
 	res := 0
-	
-	for _, val := range col1{
+
+	for _, val := range col1 {
 		occurence, _ := col2[val]
-		res += val*occurence
+		res += val * occurence
 	}
 	return res
 }
