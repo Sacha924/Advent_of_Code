@@ -10,10 +10,14 @@ import (
 )
 
 func main() {
+	// PART 1
 	col1, col2 := readAndProcessFile("day1/input.txt", "   ")
 	sort.Ints(col1)
 	sort.Ints(col2)
-	fmt.Printf("Result for day1 : %d", compare(col1, col2)) // 2756096
+	fmt.Printf("Result for day1 : %d \n", compare(col1, col2)) // 2756096
+
+	// PART 2
+	fmt.Printf("Result for day1 part2 : %d \n", readAndProcessFile2("day1/input.txt", "   "))  // 23117829
 }
 
 func readAndProcessFile(path, sep string) ([]int, []int) {
@@ -59,4 +63,41 @@ func abs(x int) int { // working with math.Abs is annoying bc it's using float v
 		return -x
 	}
 	return x
+}
+
+
+func readAndProcessFile2(path, sep string) (int) {
+	col1 := make([]int, 1000)
+	col2 := make(map[int]int)
+	f, _ := os.Open(path)
+	defer func() { _ = f.Close() }()
+
+	r := bufio.NewReader(f)
+	for {
+		line, _, err := r.ReadLine()
+		lineStr := string(line)
+		if len(line) > 0 {
+			values := strings.Split(lineStr, sep)
+			if len(values) == 2 {
+				val1, err1 := strconv.Atoi(values[0])
+				if err1 == nil {
+					col1 = append(col1, val1)
+				}
+				val2, err2 := strconv.Atoi(values[1])
+				if err2 == nil {
+					col2[val2] += 1
+				}
+			}
+		}
+		if err != nil {
+			break
+		}
+	}
+	res := 0
+	
+	for _, val := range col1{
+		occurence, _ := col2[val]
+		res += val*occurence
+	}
+	return res
 }
