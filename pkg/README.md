@@ -1,0 +1,1 @@
+We often repeat the same actions when solving challenge. Starting day 12 I decide to use some utility functions and packages to increase efficiency of solving.
