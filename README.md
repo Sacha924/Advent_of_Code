@@ -5,3 +5,6 @@ https://stackoverflow.com/questions/21845871/golang-termbox-panic-open-dev-tty-n
 it was because I use goland extension to run instead of launching from the terminal
 
 Go x Heap is annoying
+
+mettre dans un helper ce que j'ai fait pour day16 (heap, coord, dirs)
+aussi refaire certains exos avec du graph algo
