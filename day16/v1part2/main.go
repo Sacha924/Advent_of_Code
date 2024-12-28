@@ -1,6 +1,7 @@
 package main
 
 import (
+	"advent_of_code/pkg/sets"
 	"bufio"
 	"container/heap"
 	"fmt"
@@ -19,6 +20,8 @@ var left = Direction{0, -1}
 var right = Direction{0, 1}
 var dirs = []Direction{up, left, down, right}
 
+type Path []Coord
+
 //	type LabCellData struct {
 //		Position      Coord
 //		PreviousCells map[Coord]bool
@@ -30,6 +33,7 @@ type LabCellData struct {
 	LastPosition Coord
 	cost         int
 	previousDir  Direction
+	Path         Path
 }
 
 type LabCellDataHeap []LabCellData
@@ -107,6 +111,7 @@ func findStartEnd(labyrinth [][]rune) (start, end Coord) { // I update the code 
 }
 
 func findCheapestPath(labyrinth [][]rune, start, end Coord) int {
+	var bestTiles sets.Set[Coord]
 	labHeap := &LabCellDataHeap{}
 	heap.Init(labHeap)
 
@@ -117,6 +122,7 @@ func findCheapestPath(labyrinth [][]rune, start, end Coord) int {
 		LastPosition: Coord{-1, -1}, // No previous position
 		cost:         0,
 		previousDir:  right, // Initial direction is East
+		Path:         Path{},
 	})
 
 	for labHeap.Len() > 0 {
@@ -137,26 +143,32 @@ func findCheapestPath(labyrinth [][]rune, start, end Coord) int {
 
 				// allow for a diff of 1000
 				// because if two paths splits, and one turn before the other, it will have 1000 before the other and only
-				// the one that didn't made the turn yet will be valid, see imagelab.png, case of tile 10042
+				// the one that didn't make the turn yet will be valid, see imagelab.png, case of tile 10042
 				if costMatrix[neiCoord.x][neiCoord.y] >= neiCost-1000 {
+					newPath := make(Path, len(current.Path))
+					_ = copy(newPath, current.Path)
+					newPath = append(newPath, current.Position)
 					labHeap.Push(LabCellData{
 						Position:     neiCoord,
 						LastPosition: current.Position,
 						cost:         neiCost,
 						previousDir:  dir,
+						Path:         newPath,
 					})
 					costMatrix[neiCoord.x][neiCoord.y] = min(neiCost, costMatrix[neiCoord.x][neiCoord.y])
 				}
 
 				// If we've reached the end position, return the cost
-				if neiCoord == end {
+				if neiCoord == end && neiCost == 98484 { // best cost found in part1
 					//PrintMatrix(costMatrix) // debug (can compare to v2 to see the diff
-					return neiCost
+					for _, coord := range current.Path {
+						bestTiles.Add(coord)
+					}
 				}
 			}
 		}
 	}
-	return -1 // No path found
+	return len(bestTiles) + 2 // addind start and end
 }
 
 func initMatrix(labyrinth [][]rune, initialValue int) [][]int {
