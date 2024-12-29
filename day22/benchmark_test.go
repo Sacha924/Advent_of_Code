@@ -19,7 +19,7 @@ func lastDigitString(num int) int {
 }
 
 // Benchmark for modulo approach
-func BenchmarkLastDigitModulo(b *testing.B) {
+func BenchmarkLastDigitModulo(b *testing.B) { // BenchmarkLastDigitModulo-20    	1000000000	         0.1745 ns/op
 	num := 123456789
 	for i := 0; i < b.N; i++ {
 		_ = lastDigitModulo(num)
@@ -27,7 +27,7 @@ func BenchmarkLastDigitModulo(b *testing.B) {
 }
 
 // Benchmark for string conversion approach
-func BenchmarkLastDigitString(b *testing.B) {
+func BenchmarkLastDigitString(b *testing.B) { // BenchmarkLastDigitString-20    	49950496	        22.59 ns/op
 	num := 123456789
 	for i := 0; i < b.N; i++ {
 		_ = lastDigitString(num)
