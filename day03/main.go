@@ -11,7 +11,7 @@ import (
 //func main() {
 //	re := regexp.MustCompile(`mul\([0-9]{1,3},[0-9]{1,3}\)`)
 //
-//	data, err := os.ReadFile("day3/input.txt")
+//	data, err := os.ReadFile("day03/input.txt")
 //
 //	if err != nil {
 //		panic(err)
@@ -32,7 +32,7 @@ import (
 func main() {
 	re := regexp.MustCompile(`mul\([0-9]{1,3},[0-9]{1,3}\)|don't|do`) // don't before do, order matter
 
-	data, err := os.ReadFile("day3/input.txt")
+	data, err := os.ReadFile("day03/input.txt")
 
 	if err != nil {
 		panic(err)
