@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// PART 1
-	col1, col2 := readAndProcessFile("day1/input.txt", "   ")
+	col1, col2 := readAndProcessFile("day01/input.txt", "   ")
 	sort.Ints(col1)
 	sort.Ints(col2)
 	fmt.Printf("Result for day1 : %d \n", compare(col1, col2)) // 2756096
