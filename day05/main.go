@@ -20,8 +20,8 @@ EveryTime I find a number X, I need to check that any number already saw is not 
 */
 
 func main() {
-	fmt.Printf("result of day5 : %d \n", day5("day5/input.txt", false))       // 7024
-	fmt.Printf("result of day5 part 2 : %d \n", day5("day5/input.txt", true)) //
+	fmt.Printf("result of day5 : %d \n", day5("day05/input.txt", false))       // 7024
+	fmt.Printf("result of day5 part 2 : %d \n", day5("day05/input.txt", true)) //
 }
 
 // rulesMapping give for a number, the list of number that should not be before
