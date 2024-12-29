@@ -16,7 +16,7 @@ add this antinode positions into a set and do the same for every antenna type.
 type computeAntiNodeFunc func([2]int, [2]int, int, int) [][2]int
 
 func main() {
-	antennaTypeToPos, rows, cols := readAndProcess("day8/input.txt")
+	antennaTypeToPos, rows, cols := readAndProcess("day08/input.txt")
 	fmt.Printf("Day 8 result : %d\n", computeAllAntiNodes(antennaTypeToPos, rows, cols, computeAntiNode))
 	fmt.Printf("Day 8 result Part 2 : %d\n", computeAllAntiNodes(antennaTypeToPos, rows, cols, computeAntiNodePart2))
 }
