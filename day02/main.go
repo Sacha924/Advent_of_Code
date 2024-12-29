@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fmt.Printf("result of day2 : %d \n", readAndProcessFile("day2/input.txt"))
+	fmt.Printf("result of day2 : %d \n", readAndProcessFile("day02/input.txt"))
 }
 
 func readAndProcessFile(path string) int {
