@@ -13,12 +13,12 @@ type EqualCheckFunc func(int, []int) bool
 
 func main() {
 	start := time.Now()
-	fmt.Printf("Day 7 result with canBeEqual: %d\n", readAndProcess("day7/input.txt", canBeEqual)) // 3351424677624
-	fmt.Println(time.Since(start))                                                                 // 21ms, bitmask tech blazingly fast
+	fmt.Printf("Day 7 result with canBeEqual: %d\n", readAndProcess("day07/input.txt", canBeEqual)) // 3351424677624
+	fmt.Println(time.Since(start))                                                                  // 21ms, bitmask tech blazingly fast
 	start = time.Now()
-	fmt.Printf("Day 7 result with canBeEqual2: %d\n", readAndProcess("day7/input.txt", func(expected int, numbers []int) bool {
+	fmt.Printf("Day 7 result with canBeEqual2: %d\n", readAndProcess("day07/input.txt", func(expected int, numbers []int) bool {
 		return canBeEqual2(expected, numbers, numbers[0], 1)
-	})) // 204976636995111%
+	}))                            // 204976636995111%
 	fmt.Println(time.Since(start)) // 1.1s not that bad
 }
 
