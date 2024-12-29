@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	matrix, x, y, dirX, dirY := readFile("day6/input.txt")
+	matrix, x, y, dirX, dirY := readFile("day06/input.txt")
 	visited := make(map[string]bool)
 	makeGuardMove(matrix, x, y, dirX, dirY, visited)
 	fmt.Printf("Day 6 part 2: %d\n", day6Part2(matrix, x, y, dirX, dirY)) // 1729 IT TAKES 4 SEC
