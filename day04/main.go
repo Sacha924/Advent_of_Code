@@ -14,7 +14,7 @@ const (
 )
 
 func main() {
-	words := fileToWords("day4/input.txt")
+	words := fileToWords("day04/input.txt")
 	fmt.Printf("result of day4 : %d \n", findAllXmas(words))          // 2551
 	fmt.Printf("result of day4 part 2 : %d \n", findXmasPart2(words)) // 2551
 }
