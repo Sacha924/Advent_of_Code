@@ -59,3 +59,13 @@ func (s *Set[T]) Seq(yield func(T) bool) {
 		}
 	}
 }
+
+func (s *Set[T]) Intersect(other Set[T]) []T {
+	intersect := make([]T, 0)
+	for v, _ := range *s {
+		if other.Contains(v) {
+			intersect = append(intersect, v)
+		}
+	}
+	return intersect
+}
