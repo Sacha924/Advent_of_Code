@@ -64,12 +64,6 @@ func computeParcelScore(parcel [][2]int) int {
 	return area * perimeter
 }
 
-//func computeParcelScore2(parcel [][2]int) int {
-//	area := len(parcel)
-//	sides := computeSides(parcel)
-//	return area * sides
-//}
-
 // perimeter for a case is 4 - number of neighbor
 func computeParcelPerimeter(parcel [][2]int) int {
 	res := 0
@@ -100,7 +94,3 @@ func getNei(pos [2]int) [][2]int {
 	}
 	return neighbors
 }
-
-//func computeSides(parcel [][2]int) int {
-//
-//}
